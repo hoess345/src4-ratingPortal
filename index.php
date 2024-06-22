@@ -1,29 +1,28 @@
 <?php
-// // === register autoloader
-// spl_autoload_register(function ($class) {
-//     $file = __DIR__ . '/src/' . str_replace('\\', '/', $class) . '.php';
-//     if (file_exists($file)) {
-//         require_once($file);
-//     }
-// });
+// === register autoloader
+spl_autoload_register(function ($class) {
+    $file = __DIR__ . '/src/' . str_replace('\\', '/', $class) . '.php';
+    if (file_exists($file)) {
+        require_once($file);
+    }
+});
 
-// $sp = new \ServiceProvider();
+$sp = new \ServiceProvider();
 
-// $sp->register(\Presentation\MVC\MVC::class, function(){
-//     return new \Presentation\MVC\MVC();
-// }, isSingleton: true);
+$sp->register(\Presentation\MVC\MVC::class, function () {
+    return new \Presentation\MVC\MVC();
+}, isSingleton: true);
 
-// // PRESENTATION
-// // controllers
-// $sp->register(\Presentation\Controllers\Home::class);
-// $sp->register(\Presentation\Controllers\Books::class);
-// $sp->register(\Presentation\Controllers\Cart::class);
-// $sp->register(\Presentation\Controllers\Order::class);
-// $sp->register(\Presentation\Controllers\User::class);
+// PRESENTATION
+// controllers
+$sp->register(\Presentation\Controllers\Home::class);
+$sp->register(\Presentation\Controllers\Products::class);
+$sp->register(\Presentation\Controllers\User::class);
 
 
 // // APPLICATION
 // // commands and querries
+$sp->register(\Application\Query\ProductSearchQuery::class);
 // $sp->register(\Application\CategoriesQuery::class);
 // $sp->register(\Application\BooksQuery::class);
 // $sp->register(\Application\BookSearchQuery::class);
@@ -60,5 +59,5 @@
 // $sp->register(\Application\Interfaces\OrderRepository::class, \Infrastructure\Repository::class);
 // $sp->register(\Application\Interfaces\UserRepository::class, \Infrastructure\Repository::class);
 
-// $sp->resolve(\Presentation\MVC\MVC::class)->handleRequest($sp); 
+$sp->resolve(\Presentation\MVC\MVC::class)->handleRequest($sp);
 
