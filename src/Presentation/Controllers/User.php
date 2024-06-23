@@ -10,8 +10,8 @@ class User extends \Presentation\MVC\Controller
     public function __construct(
         private \Application\Command\SignInCommand $signInCommand,
         private \Application\Command\RegisterCommand $registerCommand,
-//        private \Application\SignOutCommand $signOutCommand,
-//        private \Application\SignedInUserQuery $signedInUserQuery
+        private \Application\Command\SignOutCommand $signOutCommand,
+        private \Application\Query\SignedInUserQuery $signedInUserQuery
     )
     {
     }
@@ -19,8 +19,8 @@ class User extends \Presentation\MVC\Controller
     public function GET_LogIn(): \Presentation\MVC\ActionResult
     {
         return $this->view('login', [
-//            'user' => $this->signedInUserQuery->execute(),
-            'user' => null,
+            'user' => $this->signedInUserQuery->execute(),
+//            'user' => null,
             'userName' => $this->tryGetParam(self::PARAM_USER_NAME, $value) ? $value : ''
         ]);
     }
@@ -29,8 +29,8 @@ class User extends \Presentation\MVC\Controller
     {
         if (!$this->signInCommand->execute($this->getParam(self::PARAM_USER_NAME), $this->getParam(self::PARAM_PASSWORD))) {
             return $this->view('login', [
-//                'user' => $this->signedInUserQuery->execute(),
-                'user' => null,
+                'user' => $this->signedInUserQuery->execute(),
+//                'user' => null,
                 'userName' => $this->getParam(self::PARAM_USER_NAME),
                 'errors' => ['Invalid username or password']
             ]);
@@ -62,7 +62,7 @@ class User extends \Presentation\MVC\Controller
 
     public function POST_LogOut(): \Presentation\MVC\ActionResult
     {
-//        $this->signOutCommand->execute();
+        $this->signOutCommand->execute();
         return $this->redirect('Home', 'Index');
     }
 }

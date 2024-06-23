@@ -23,9 +23,12 @@ $sp->register(\Presentation\Controllers\User::class);
 // Application
 // querries
 $sp->register(\Application\Query\ProductSearchQuery::class);
+$sp->register(\Application\Query\SignedInUserQuery::class);
+$sp->register(\Application\Query\ProductQuery::class);
 
 // commands
 $sp->register(\Application\Command\SignInCommand::class);
+$sp->register(\Application\Command\SignOutCommand::class);
 $sp->register(\Application\Command\RegisterCommand::class);
 
 // services
@@ -55,6 +58,7 @@ $sp->register(\Infrastructure\Repository::class, function () {
     return new \Infrastructure\Repository("localhost", "root", "", "ratingportal");
 }, isSingleton: true);
 $sp->register(\Application\Interfaces\UserRepository::class, \Infrastructure\Repository::class);
+$sp->register(\Application\Interfaces\ProductRepository::class, \Infrastructure\Repository::class);
 // $sp->register(\Application\Interfaces\CategoryRepository::class, \Infrastructure\Repository::class);
 // $sp->register(\Application\Interfaces\BookRepository::class, \Infrastructure\Repository::class);
 // $sp->register(\Application\Interfaces\OrderRepository::class, \Infrastructure\Repository::class);

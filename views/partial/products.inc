@@ -5,18 +5,18 @@
             <th>Producer</th>
             <th>Average Rating</th>
             <th>Ratings</th>
-<!--            <th colspan="2"></th>-->
+            <th colspan="2"></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($data['products'] as $product) : ?>
-            <tr <?php if($book->isInCart) { ?> class="table-active" <?php } ?>>
+            <tr>
                 <td><?php $htmlOut($product->productName); ?></td>
-                <td><?php $htmlOut($book->producer); ?></td>
-                <td><?php $htmlOut($book->ratingAverage); ?></td>
-                <td><?php $htmlOut($book->ratingCount) ?></td>
+                <td><?php $htmlOut($product->producer); ?></td>
+                <td><?php $htmlOut($product->rating); ?></td>
+                <td><?php $htmlOut($product->ratingCount) ?></td>
                 <td>
-                    <div class="d-flex">
+<!--                    <div class="d-flex">
                         <?php $beginForm('Cart', 'Add', ['bid' => $book->id, 'ctx' => $data['context']], 'post', 'form-inline'); ?>
                             <button class="btn btn-link">Add</button>
                         <?php $endForm(); ?>
@@ -24,7 +24,7 @@
                         <?php $beginForm('Cart', 'Remove', ['bid' => $book->id, 'ctx' => $data['context']], 'post', 'form-inline'); ?>
                         <button class="btn btn-link" <?php if(!$book->isInCart){?> disabled <?php } ?>>Remove</button>
                         <?php $endForm(); ?>
-                    </div>
+                    </div> -->
                 </td>
             </tr>
         <?php endforeach; ?>

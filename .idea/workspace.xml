@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f15e851-d1a6-442b-938b-2891edbd5537" name="Changes" comment="Added Home, Product-View and Login">
+    <list default="true" id="9f15e851-d1a6-442b-938b-2891edbd5537" name="Changes" comment="Added Login and Register form. Already possible to register and login.">
+      <change afterPath="$PROJECT_DIR$/views/productList.inc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Entities/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Entities/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Entities/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Entities/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Query/ProductSearchQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Query/ProductSearchQuery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Infrastructure/Repository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Infrastructure/Repository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Controllers/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Controllers/Products.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/home.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/home.inc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/login.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partial/header.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/partial/header.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partial/user.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/partial/user.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partial/products.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/partial/products.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/product.inc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +27,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpTemplates">
+    <option name="NEW_PHP_FILE_LAST_EXTENSION" value="inc" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -78,7 +84,7 @@
       <updated>1719002909269</updated>
       <workItem from="1719002910302" duration="476000" />
       <workItem from="1719054370640" duration="6440000" />
-      <workItem from="1719157914443" duration="5974000" />
+      <workItem from="1719157914443" duration="14555000" />
     </task>
     <task id="LOCAL-00001" summary="Added Home, Product-View and Login">
       <option name="closed" value="true" />
@@ -88,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719060796738</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Login and Register form. Already possible to register and login.">
+      <option name="closed" value="true" />
+      <created>1719168667182</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719168667197</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +121,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Home, Product-View and Login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Home, Product-View and Login" />
+    <MESSAGE value="Added Login and Register form. Already possible to register and login." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Login and Register form. Already possible to register and login." />
   </component>
 </project>

@@ -2,7 +2,9 @@
 
 namespace Infrastructure;
 
-class Repository implements \Application\Interfaces\UserRepository
+class Repository implements
+    \Application\Interfaces\UserRepository,
+    \Application\Interfaces\ProductRepository
 {
     private $server;
     private $userName;
@@ -97,5 +99,41 @@ class Repository implements \Application\Interfaces\UserRepository
         );
         $stat->close();
         $con->close();
+    }
+
+    public function getProductsForFilter(string $filter) : array {
+        if (empty($filter)) {
+            return $this->getAllProducts();
+        }
+        $products = [];
+        $con = $this->getConnection();
+        $stat = $this->executeStatement($con,
+            'SELECT id, producer, productName, username, rating, ratingCount FROM product WHERE productName LIKE ?
+             OR producer LIKE ?',
+            function($s) use ($filter) {
+                $s->bind_param('s', $filter);
+            }
+        );
+        $stat->bind_result($id, $producer, $productName, $username, $rating, $ratingCount);
+        while ($stat->fetch()) {
+            $products[] = new \Application\Entities\Product($id, $producer, $productName, $username, $rating, $ratingCount);
+        }
+        $stat->close();
+        $con->close();
+        return $products;
+    }
+
+    public function getAllProducts(): array
+    {
+        $products = [];
+        $con = $this->getConnection();
+        $stat = $this->executeQuery($con, 'SELECT id, producer, productName, username, rating, ratingCount FROM product');
+//        $stat->bind_result($id, $producer, $productName, $username, $rating, $ratingCount);
+        while ($res = $stat->fetch_object()) {
+            $products[] = new \Application\Entities\Product($res->id, $res->producer, $res->productName, $res->username, $res->rating, $res->ratingCount);
+        }
+        $stat->close();
+        $con->close();
+        return $products;
     }
 }

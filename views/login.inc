@@ -5,7 +5,6 @@
     <?php $beginForm('User', 'LogIn', method: 'post'); ?>
         <div class="mb-3">
             <label for="userName" class="form-label">User name</label>
-<!--            TODO: Resolve $data has no data -->
             <input class="form-control" id="username" name="un" value="<?php $htmlOut($data['userName']); ?>"/>
         </div>
         <div class="mb-3">
@@ -14,6 +13,5 @@
         </div>
         <button class="btn btn-primary">Login</button>
     <?php $endForm(); ?>
-
 
 <?php $render('partial/footer', $data); ?>
