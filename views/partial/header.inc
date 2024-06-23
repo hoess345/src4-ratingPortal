@@ -20,7 +20,7 @@
                     <?php $link('Search', 'Products', 'Search', cssClass: 'nav-link'); ?>
                     <?php $link('Create Product', 'Products', 'Create', cssClass: 'nav-link'); ?>
                 </nav>
-                <?php $render('partial/user', $data['user']); // TODO ?>
+                <?php $render('partial/user', $data['user']); ?>
                 <!-- TODO: navigation user -->
             </div>
         </div>

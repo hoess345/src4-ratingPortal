@@ -8,7 +8,8 @@ class User extends \Presentation\MVC\Controller
     const PARAM_PASSWORD = 'password';
 
     public function __construct(
-//        private \Application\SignInCommand $signInCommand,
+        private \Application\Command\SignInCommand $signInCommand,
+        private \Application\Command\RegisterCommand $registerCommand,
 //        private \Application\SignOutCommand $signOutCommand,
 //        private \Application\SignedInUserQuery $signedInUserQuery
     )
@@ -20,8 +21,43 @@ class User extends \Presentation\MVC\Controller
         return $this->view('login', [
 //            'user' => $this->signedInUserQuery->execute(),
             'user' => null,
-//            'userName' => $this->tryGetParam(self::PARAM_USER_NAME, $value) ? $value : ''
+            'userName' => $this->tryGetParam(self::PARAM_USER_NAME, $value) ? $value : ''
         ]);
+    }
+
+    public function POST_LogIn(): \Presentation\MVC\ActionResult
+    {
+        if (!$this->signInCommand->execute($this->getParam(self::PARAM_USER_NAME), $this->getParam(self::PARAM_PASSWORD))) {
+            return $this->view('login', [
+//                'user' => $this->signedInUserQuery->execute(),
+                'user' => null,
+                'userName' => $this->getParam(self::PARAM_USER_NAME),
+                'errors' => ['Invalid username or password']
+            ]);
+        } else {
+            return $this->redirect('Home', 'Index');
+        }
+    }
+
+    public function GET_Register(): \Presentation\MVC\ActionResult
+    {
+        return $this->view('register', [
+            'user' => null,
+            'userName' => $this->tryGetParam(self::PARAM_USER_NAME, $value) ? $value : ''
+        ]);
+    }
+
+    public function POST_Register(): \Presentation\MVC\ActionResult
+    {
+        if (!$this->registerCommand->execute($this->getParam(self::PARAM_USER_NAME), $this->getParam(self::PARAM_PASSWORD))) {
+            return $this->view('register', [
+                'user' => null,
+                'userName' => $this->getParam(self::PARAM_USER_NAME),
+                'errors' => ['Username already exists']
+            ]);
+        } else {
+            return $this->redirect('Home', 'Index');
+        }
     }
 
     public function POST_LogOut(): \Presentation\MVC\ActionResult
