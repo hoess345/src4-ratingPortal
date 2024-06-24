@@ -15,7 +15,7 @@
         <?php $endForm(); ?>
     </div>
 
-    <?php if ($data['books'] != null): ?>
+    <?php if ($data['products'] != null): ?>
         <?php if (sizeof($data['products']) > 0) {
             $render('partial/products', array(
                 'products' => $data['products'],

@@ -18,6 +18,7 @@ $sp->register(\Presentation\MVC\MVC::class, function () {
 $sp->register(\Presentation\Controllers\Home::class);
 $sp->register(\Presentation\Controllers\Products::class);
 $sp->register(\Presentation\Controllers\User::class);
+$sp->register(\Presentation\Controllers\Rating::class);
 
 
 // Application
@@ -25,11 +26,17 @@ $sp->register(\Presentation\Controllers\User::class);
 $sp->register(\Application\Query\ProductSearchQuery::class);
 $sp->register(\Application\Query\SignedInUserQuery::class);
 $sp->register(\Application\Query\ProductQuery::class);
+$sp->register(\Application\Query\RatingQuery::class);
 
 // commands
 $sp->register(\Application\Command\SignInCommand::class);
 $sp->register(\Application\Command\SignOutCommand::class);
 $sp->register(\Application\Command\RegisterCommand::class);
+$sp->register(\Application\Command\CreateProductCommand::class);
+$sp->register(\Application\Command\CreateRatingCommand::class);
+$sp->register(\Application\Command\UpdateRatingCommand::class);
+$sp->register(\Application\Command\DeleteRatingCommand::class);
+$sp->register(\Application\Command\IncreaseRatingCommand::class);
 
 // services
 $sp->register(\Application\Services\AuthenticationService::class);
@@ -59,6 +66,7 @@ $sp->register(\Infrastructure\Repository::class, function () {
 }, isSingleton: true);
 $sp->register(\Application\Interfaces\UserRepository::class, \Infrastructure\Repository::class);
 $sp->register(\Application\Interfaces\ProductRepository::class, \Infrastructure\Repository::class);
+$sp->register(\Application\Interfaces\RatingRepository::class, \Infrastructure\Repository::class);
 // $sp->register(\Application\Interfaces\CategoryRepository::class, \Infrastructure\Repository::class);
 // $sp->register(\Application\Interfaces\BookRepository::class, \Infrastructure\Repository::class);
 // $sp->register(\Application\Interfaces\OrderRepository::class, \Infrastructure\Repository::class);

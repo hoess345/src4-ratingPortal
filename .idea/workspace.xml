@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f15e851-d1a6-442b-938b-2891edbd5537" name="Changes" comment="Added Login and Register form. Already possible to register and login.">
-      <change afterPath="$PROJECT_DIR$/views/productList.inc" afterDir="false" />
+    <list default="true" id="9f15e851-d1a6-442b-938b-2891edbd5537" name="Changes" comment="Added database connection for products. Login and Register also with database implemented.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application/Entities/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Entities/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Entities/Rating.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Entities/Rating.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Interfaces/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Interfaces/ProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Query/ProductQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Query/ProductQuery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application/Query/ProductSearchQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Query/ProductSearchQuery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Util/ProductData.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Util/ProductData.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Infrastructure/Repository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Infrastructure/Repository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Controllers/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Controllers/Products.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/createProduct.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/productCreate.inc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partial/products.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/partial/products.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/product.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/productSearch.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/productSearch.inc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +31,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpTemplates">
-    <option name="NEW_PHP_FILE_LAST_EXTENSION" value="inc" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -42,25 +42,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/xampp/htdocs/ratingportal/src/Presentation/MVC",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "php.override.implement.member.chooser.php.doc": "NONE",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.41609195",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/ratingportal/src/Presentation/MVC&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.41609195&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\ratingportal\src\Presentation\MVC" />
@@ -84,7 +84,8 @@
       <updated>1719002909269</updated>
       <workItem from="1719002910302" duration="476000" />
       <workItem from="1719054370640" duration="6440000" />
-      <workItem from="1719157914443" duration="14555000" />
+      <workItem from="1719157914443" duration="15398000" />
+      <workItem from="1719217488111" duration="19535000" />
     </task>
     <task id="LOCAL-00001" summary="Added Home, Product-View and Login">
       <option name="closed" value="true" />
@@ -102,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719168667197</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added database connection for products. Login and Register also with database implemented.">
+      <option name="closed" value="true" />
+      <created>1719178526861</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719178526861</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +131,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Home, Product-View and Login" />
     <MESSAGE value="Added Login and Register form. Already possible to register and login." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Login and Register form. Already possible to register and login." />
+    <MESSAGE value="Added database connection for products. Login and Register also with database implemented." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added database connection for products. Login and Register also with database implemented." />
   </component>
 </project>

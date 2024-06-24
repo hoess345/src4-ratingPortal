@@ -16,6 +16,7 @@ class ProductQuery {
         foreach ($products as $product) {
             $user = $this->userRepository->getUserForUserName($product->getUsername());
             $productData[] = new ProductData(
+                $product->getId(),
                 $product->getProducer(),
                 $product->getProductName(),
                 $user->getUserName(),

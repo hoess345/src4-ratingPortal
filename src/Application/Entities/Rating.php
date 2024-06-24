@@ -6,9 +6,10 @@ class Rating
 {
     public function __construct(
         private string $username,
-        private string $productName,
         private int    $rating,
-        private string $comment
+        private string $comment,
+        private string $date,
+        private string $productId
     )
     {
     }
@@ -16,11 +17,6 @@ class Rating
     public function getUsername(): string
     {
         return $this->username;
-    }
-
-    public function getProductName(): string
-    {
-        return $this->productName;
     }
 
     public function getRating(): int
@@ -31,5 +27,15 @@ class Rating
     public function getComment(): string
     {
         return $this->comment;
+    }
+
+    public function getProductId(): string
+    {
+        return $this->productId;
+    }
+
+    public function getDate(): string
+    {
+        return $this->date;
     }
 }

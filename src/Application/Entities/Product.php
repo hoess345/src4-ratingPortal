@@ -15,7 +15,7 @@ class Product
     {
     }
 
-    public function get(): int
+    public function getId(): int
     {
         return $this->id;
     }

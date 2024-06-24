@@ -20,7 +20,6 @@ class User extends \Presentation\MVC\Controller
     {
         return $this->view('login', [
             'user' => $this->signedInUserQuery->execute(),
-//            'user' => null,
             'userName' => $this->tryGetParam(self::PARAM_USER_NAME, $value) ? $value : ''
         ]);
     }
@@ -30,7 +29,6 @@ class User extends \Presentation\MVC\Controller
         if (!$this->signInCommand->execute($this->getParam(self::PARAM_USER_NAME), $this->getParam(self::PARAM_PASSWORD))) {
             return $this->view('login', [
                 'user' => $this->signedInUserQuery->execute(),
-//                'user' => null,
                 'userName' => $this->getParam(self::PARAM_USER_NAME),
                 'errors' => ['Invalid username or password']
             ]);

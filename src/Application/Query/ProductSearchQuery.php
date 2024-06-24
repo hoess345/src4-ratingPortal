@@ -2,6 +2,8 @@
 
 namespace Application\Query;
 
+use Application\Util\ProductData;
+
 class ProductSearchQuery {
     public function __construct(
         private \Application\Interfaces\ProductRepository $productRepository
