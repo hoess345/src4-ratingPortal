@@ -6,7 +6,8 @@
     <?php if(sizeof($data['products']) > 0) { ?>
         <?php $render('partial/products', array(
             'products' => $data['products'],
-            'context' => $data['context']
+            'context' => $data['context'],
+            'userName' => $data['user']->userName
         )); ?>
     <?php } ?>
 <?php else: ?>

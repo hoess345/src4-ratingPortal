@@ -295,4 +295,17 @@ class Repository implements
         $stat->close();
         $con->close();
     }
+
+    public function updateProduct(int $id, string $producer, string $productName)
+    {
+        $con = $this->getConnection();
+        $stat = $this->executeStatement($con,
+            'UPDATE product SET producer = ?, productName = ? WHERE id = ?',
+            function ($s) use ($producer, $productName, $id) {
+                $s->bind_param('ssi', $producer, $productName, $id);
+            }
+        );
+        $stat->close();
+        $con->close();
+    }
 }

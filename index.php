@@ -37,6 +37,7 @@ $sp->register(\Application\Command\CreateRatingCommand::class);
 $sp->register(\Application\Command\UpdateRatingCommand::class);
 $sp->register(\Application\Command\DeleteRatingCommand::class);
 $sp->register(\Application\Command\IncreaseRatingCommand::class);
+$sp->register(\Application\Command\UpdateProductCommand::class);
 
 // services
 $sp->register(\Application\Services\AuthenticationService::class);

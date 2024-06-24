@@ -4,21 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f15e851-d1a6-442b-938b-2891edbd5537" name="Changes" comment="Added database connection for products. Login and Register also with database implemented.">
+    <list default="true" id="9f15e851-d1a6-442b-938b-2891edbd5537" name="Changes" comment="Rating implemented. TODO: Update rating.inc to call delete instead of create.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Entities/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Entities/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Entities/Rating.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Entities/Rating.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Command/CreateRatingCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Command/CreateRatingCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application/Interfaces/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Interfaces/ProductRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Query/ProductQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Query/ProductQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Query/ProductSearchQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Query/ProductSearchQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Util/ProductData.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Util/ProductData.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Infrastructure/Repository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Infrastructure/Repository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Controllers/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Controllers/Products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/createProduct.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/productCreate.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Controllers/Rating.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Controllers/Rating.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partial/products.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/partial/products.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/productSearch.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/productSearch.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partial/rating.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/partial/rating.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/productList.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/productList.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/productOverview.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/productOverview.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/rating.inc" beforeDir="false" afterPath="$PROJECT_DIR$/views/rating.inc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +84,8 @@
       <workItem from="1719054370640" duration="6440000" />
       <workItem from="1719157914443" duration="15398000" />
       <workItem from="1719217488111" duration="19535000" />
+      <workItem from="1719244989254" duration="60000" />
+      <workItem from="1719247343688" duration="4116000" />
     </task>
     <task id="LOCAL-00001" summary="Added Home, Product-View and Login">
       <option name="closed" value="true" />
@@ -111,7 +111,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719178526861</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Rating implemented. TODO: Update rating.inc to call delete instead of create.">
+      <option name="closed" value="true" />
+      <created>1719245039243</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1719245039243</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +140,7 @@
     <MESSAGE value="Added Home, Product-View and Login" />
     <MESSAGE value="Added Login and Register form. Already possible to register and login." />
     <MESSAGE value="Added database connection for products. Login and Register also with database implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added database connection for products. Login and Register also with database implemented." />
+    <MESSAGE value="Rating implemented. TODO: Update rating.inc to call delete instead of create." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rating implemented. TODO: Update rating.inc to call delete instead of create." />
   </component>
 </project>

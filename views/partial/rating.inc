@@ -11,10 +11,10 @@
     <tbody>
     <?php foreach ($data['ratings'] as $rating) : ?>
         <tr>
-            <td><?php $htmlOut($rating->userName); ?></td>
-            <td><?php $htmlOut($rating->rating); ?></td>
-            <td><?php $htmlOut($rating->data); ?></td>
-            <td><?php $htmlOut($rating->comment) ?></td>
+            <td><?php $htmlOut($rating->getUsername()); ?></td>
+            <td><?php $htmlOut($rating->getRating()); ?></td>
+            <td><?php $htmlOut($rating->getDate()); ?></td>
+            <td><?php $htmlOut($rating->getComment()) ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

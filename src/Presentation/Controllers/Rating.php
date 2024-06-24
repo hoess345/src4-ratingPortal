@@ -45,13 +45,11 @@ class Rating extends \Presentation\MVC\Controller
 
     public function GET_Overview(): \Presentation\MVC\ActionResult
     {
-        $productId = $this->getParam('id');
-        $ratings = $this->ratingQuery->execute($productId);
-
-        return $this->view('productList', [
+        return $this->view('productOverview', [
             'user' => $this->SignedInUserQuery->execute(),
             'userName' => $this->SignedInUserQuery->execute()->userName ?? '',
-            'products' => $this->productQuery->execute(),
+            'ratings' => $this->ratingQuery->execute($this->getParam('bid')),
+            'productName' => $this->productRepository->getProductById($this->getParam('bid'))->productName,
             'context' => $this->getRequestUri()
         ]);
     }
@@ -71,14 +69,13 @@ class Rating extends \Presentation\MVC\Controller
             ]);
         $username = $this->SignedInUserQuery->execute()->userName;
         $comment = $this->getParam('comment') ?? '';
-        $date = date('d.m.Y');
+        $date = date('Y-m-d', time());
         $productId = $this->getParam('bid');
         echo $this->getParam('newRating');
+        // its not possible to create more than 1 rating for a product
         if ($this->getParam('newRating') != 1)
-            // TODO: Bei update verschwindet das Rating
             $this->updateRatingCommand->execute(new \Application\Util\RatingData($username, $rating, $comment, $date, $productId));
         else {
-            $this->increaseRatingCommand->execute($productId, $username);
             $this->createRatingCommand->execute($username, $rating, $comment, $date, $productId);
         }
 

@@ -14,11 +14,13 @@
 </div>
 <div class="mb-3">
     <button class="btn btn-primary"><?php if ($data['rating']->rating == -1) echo 'Add'; else echo 'Update' ?></button>
+</div>
+<?php $endForm($data); ?>
+<?php $beginForm('Rating', 'Delete', ['bid' => $data['productId'], 'newRating' => ($data['rating']->rating == -1)], method: 'post'); ?>
+<div class="mb-3">
     <?php if ($data['rating']->rating != -1) { ?>
-        <?php $beginForm('Rating', 'Delete', ['bid' => $data['productId']], method: 'post'); ?>
         <button class="btn btn-primary">Delete</button>
     <?php } ?>
-    <?php $endForm($data); ?>
 </div>
 
 <?php $endForm($data); ?>

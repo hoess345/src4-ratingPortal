@@ -69,4 +69,15 @@ class Products extends \Presentation\MVC\Controller
         $productId = $this->createProductCommand->execute($productName, $producer);
         return $this->redirect('Products', 'Index');
     }
+
+    public function POST_Edit() : \Presentation\MVC\ActionResult
+    {
+        return $this->view('productEdit', [
+            'user' => $this->signedInUserQuery->execute(),
+            'id' => $this->getParam('id'),
+            'productName' => $this->productQuery->execute($this->getParam('id'))->productName,
+            'producer' => $this->productQuery->execute($this->getParam('id'))->producer,
+            'context' => $this->getRequestUri()
+        ]);
+    }
 }
