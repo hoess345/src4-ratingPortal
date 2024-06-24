@@ -154,7 +154,6 @@ class Repository implements
         $products = [];
         $con = $this->getConnection();
         $stat = $this->executeQuery($con, 'SELECT id, producer, productName, username, rating, ratingCount FROM product');
-//        $stat->bind_result($id, $producer, $productName, $username, $rating, $ratingCount);
         while ($res = $stat->fetch_object()) {
             $products[] = new Product($res->id, $res->producer, $res->productName, $res->username, $res->rating, $res->ratingCount);
         }

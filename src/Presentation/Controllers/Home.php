@@ -5,7 +5,7 @@ namespace Presentation\Controllers;
 class Home extends \Presentation\MVC\Controller
 {
     public function __construct(
-//        private \Application\SignedInUserQuery $signedInUserQuery
+        private \Application\Query\SignedInUserQuery $signedInUserQuery
     )
     {
     }
@@ -13,8 +13,7 @@ class Home extends \Presentation\MVC\Controller
     public function GET_index(): \Presentation\MVC\ActionResult
     {
         return $this->view('home', [
-//            'user' => $this->signedInUserQuery->execute()
-            'user' => null
+            'user' => $this->signedInUserQuery->execute()
         ]);
     }
 }

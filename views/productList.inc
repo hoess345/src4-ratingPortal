@@ -7,7 +7,7 @@
         <?php $render('partial/products', array(
             'products' => $data['products'],
             'context' => $data['context'],
-            'userName' => $data['user']->userName
+            'userName' => $data['user']->userName ?? ''
         )); ?>
     <?php } ?>
 <?php else: ?>

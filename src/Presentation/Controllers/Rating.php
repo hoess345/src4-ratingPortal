@@ -12,16 +12,14 @@ class Rating extends \Presentation\MVC\Controller
         private \Application\Query\RatingQuery            $ratingQuery,
         private \Application\Query\SignedInUserQuery      $SignedInUserQuery,
         private \Application\Interfaces\ProductRepository $productRepository,
-        private \Application\Query\ProductQuery           $productQuery,
         private \Application\Interfaces\RatingRepository  $ratingRepository,
         private \Application\Command\UpdateRatingCommand  $updateRatingCommand,
         private \Application\Command\DeleteRatingCommand  $deleteRatingCommand,
-        private \Application\Command\IncreaseRatingCommand $increaseRatingCommand
     )
     {
     }
 
-    public function POST_Add(): \Presentation\MVC\ActionResult
+    public function GET_Add(): \Presentation\MVC\ActionResult
     {
 
         $user = $this->SignedInUserQuery->execute();
@@ -37,9 +35,9 @@ class Rating extends \Presentation\MVC\Controller
         return $this->view('rating', [
             'user' => $user,
             'userName' => $user->userName,
-            'productId' => $this->getParam('bid'),
-            'productName' => $this->productRepository->getProductById($this->getParam('bid'))->productName,
-            'rating' => $this->ratingRepository->getRatingForUserAndProduct($this->getParam('bid'), $user->userName),
+            'productId' => $this->getParam('pid'),
+            'productName' => $this->productRepository->getProductById($this->getParam('pid'))->productName,
+            'rating' => $this->ratingRepository->getRatingForUserAndProduct($this->getParam('pid'), $user->userName),
         ]);
     }
 
@@ -48,8 +46,8 @@ class Rating extends \Presentation\MVC\Controller
         return $this->view('productOverview', [
             'user' => $this->SignedInUserQuery->execute(),
             'userName' => $this->SignedInUserQuery->execute()->userName ?? '',
-            'ratings' => $this->ratingQuery->execute($this->getParam('bid')),
-            'productName' => $this->productRepository->getProductById($this->getParam('bid'))->productName,
+            'ratings' => $this->ratingQuery->execute($this->getParam('pid')),
+            'productName' => $this->productRepository->getProductById($this->getParam('pid'))->productName,
             'context' => $this->getRequestUri()
         ]);
     }
@@ -62,16 +60,15 @@ class Rating extends \Presentation\MVC\Controller
             return $this->view('rating', [
                 'user' => $this->SignedInUserQuery->execute(),
                 'userName' => $this->SignedInUserQuery->execute()->userName,
-                'productId' => $this->getParam('bid'),
-                'productName' => $this->productRepository->getProductById($this->getParam('bid'))->productName,
-                'rating' => $this->ratingRepository->getRatingForUserAndProduct($this->getParam('bid'), $this->SignedInUserQuery->execute()->userName),
+                'productId' => $this->getParam('pid'),
+                'productName' => $this->productRepository->getProductById($this->getParam('pid'))->productName,
+                'rating' => $this->ratingRepository->getRatingForUserAndProduct($this->getParam('pid'), $this->SignedInUserQuery->execute()->userName),
                 'errors' => ['Rating must be between 1 and 5']
             ]);
         $username = $this->SignedInUserQuery->execute()->userName;
         $comment = $this->getParam('comment') ?? '';
         $date = date('Y-m-d', time());
-        $productId = $this->getParam('bid');
-        echo $this->getParam('newRating');
+        $productId = $this->getParam('pid');
         // its not possible to create more than 1 rating for a product
         if ($this->getParam('newRating') != 1)
             $this->updateRatingCommand->execute(new \Application\Util\RatingData($username, $rating, $comment, $date, $productId));
@@ -84,7 +81,7 @@ class Rating extends \Presentation\MVC\Controller
 
     public function POST_Delete(): \Presentation\MVC\ActionResult
     {
-        $this->deleteRatingCommand->execute($this->getParam('bid'), $this->SignedInUserQuery->execute()->userName);
+        $this->deleteRatingCommand->execute($this->getParam('pid'), $this->SignedInUserQuery->execute()->userName);
         return $this->redirect('Products', 'index', ['id' => null]);
     }
 }

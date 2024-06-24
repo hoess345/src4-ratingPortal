@@ -1,6 +1,6 @@
 <?php $render('partial/header', $data); ?>
 
-    <h1>Ratings for <?php echo $data['productName'] ?></h1>
+    <h1>Ratings for <?php $htmlOut($data['productName']) ?></h1>
 
 <?php if($data['ratings'] > 0): ?>
     <?php if(sizeof($data['ratings']) > 0) { ?>

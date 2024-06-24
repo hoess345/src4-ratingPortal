@@ -33,7 +33,7 @@ class User extends \Presentation\MVC\Controller
                 'errors' => ['Invalid username or password']
             ]);
         } else {
-            return $this->redirect('Home', 'Index');
+            return $this->redirect('Products', 'Index');
         }
     }
 

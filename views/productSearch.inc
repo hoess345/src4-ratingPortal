@@ -3,7 +3,7 @@
     <h1>Search Site</h1>
 
     <div class="my-3">
-        <?php $beginForm('Products', 'Search'); ?>
+        <?php $beginForm('Products', 'Search', method: 'get'); ?>
             <div class="row g-3">
                 <div class="col-auto">
                     <input class="form-control" name="f" value="<?php $htmlOut($data['filter'])?>" />
@@ -19,7 +19,8 @@
         <?php if (sizeof($data['products']) > 0) {
             $render('partial/products', array(
                 'products' => $data['products'],
-                'context' => $data['context']
+                'context' => $data['context'],
+                'userName' => $data['user']->userName ?? ''
             ));
         } else { ?>
             <p>No matching books found</p>

@@ -27,11 +27,6 @@ abstract class Controller
         return new ViewResult($view, $data);
     }
 
-//    public final function redirectToUri(string $uri): RedirectToUriResult
-//    {
-//        return new RedirectToUriResult($uri);
-//    }
-
     public final function redirect(string $controller, string $action, array $params = []): RedirectResult
     {
         return new RedirectResult($controller, $action, $params);
